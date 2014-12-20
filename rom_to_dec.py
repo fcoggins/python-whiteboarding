@@ -24,24 +24,20 @@ def convert_to_decimal(roman):
         decimals.append(convertor[roman[i]])
     
     #check order for everything except the last digit
-    decimals_ordered = []
+    sum = 0
     counter = 0
     while counter < (len(decimals) -1) :
         if decimals[counter] < decimals[counter + 1]:
-            decimals_ordered.append(decimals[counter + 1] - decimals[counter])
+            sum += decimals[counter + 1] - decimals[counter]
             counter += 1
         else:
-            decimals_ordered.append(decimals[counter])
+            sum += decimals[counter]
         counter += 1
 
     #check if the last digit needs to be added
     if decimals[-2] >= decimals[-1]:
-        decimals_ordered.append(decimals[-1])
+        sum += decimals[-1]
 
-    #sum everything
-    sum = 0
-    for num in decimals_ordered:
-        sum += num
     return sum
         
 if __name__ == '__main__':
