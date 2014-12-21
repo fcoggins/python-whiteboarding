@@ -6,6 +6,13 @@ def find_last(n):
 
     >>> find_last(5)
     3
+
+    >>> find_last(12)
+    9
+
+    >>> find_last(11)
+    7
+
     '''
 
     cycle = linkedlists.Cycle(n)
