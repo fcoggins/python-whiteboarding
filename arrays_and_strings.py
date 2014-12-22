@@ -119,7 +119,7 @@ def is_permutation(string1, string2):
 
     return dictionary1 == dictionary2
 
-def replace_spaces_%20(string):
+def replace_spaces_20(string):
     '''Replace all spaces in a string with "%20". Trim spaces for front and end
 
     Args:
@@ -127,21 +127,60 @@ def replace_spaces_%20(string):
     Returns:
         a string
 
-    >>> replace_spaces_%20('I love Python    ')
+    >>> replace_spaces_20('I love Python    ')
     'I%20love%20Python'
 
-    >>> replace_spaces%20('hohoho')
-    hohoho
+    >>> replace_spaces_20('hohoho')
+    'hohoho'
 
     '''
     new_string = ''
+    string = string.rstrip()
     for i in range(len(string)):
-        
+        if string[i] == " ":
+            new_string = new_string + '%20'
+        else:
+            new_string = new_string + string[i]
+    return new_string
 
+def compress_string(string):
+    '''Compress a string to give a character and the number of times a character
+    is repeated.
 
+    Args:
+        string: input string of only upper and lower case a-z
+    Returns:
+        string with the character followed by the number of times that it occurs.
+        If the compressed string length is not less than the original string length,
+        tha original string is returned.
 
+    >>> compress_string('aabccccaaa')
+    'a2b1c4a3'
 
+    >>> compress_string('aabbcc')
+    'aabbcc'
 
+    >>> compress_string('aabcccccca')
+    'a2b1c6a1'
+
+    '''
+    new_string = ''
+    count = 1
+    for i in range(len(string)-1):
+        if string[i] == string[i+1]:
+            count += 1
+        else:
+            new_string += string[i]
+            new_string += str(count)
+            count = 1 
+        if i + 2 == len(string):
+            new_string += string[-1]
+            new_string += str(count)
+         
+    if len(new_string) < len(string):
+        return new_string
+    else:
+        return string
 
 if __name__ == '__main__':
     import doctest
