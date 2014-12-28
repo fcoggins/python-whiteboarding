@@ -9,6 +9,7 @@ class LinkedList(object):
         self.head = None
         self.tail = None
 
+
     def AddNode(self, data):
         new_node = Node(data)
         if self.head == None:
@@ -22,7 +23,7 @@ class LinkedList(object):
     def PrintList(self):
         node = self.head
         while node:
-            print node.data
+            print node.data, 
             node = node.next
 
     def FindNode(self, data):
@@ -115,6 +116,39 @@ class LinkedList(object):
                 max = node.data
             node = node.next
         return max
+
+    def DeleteDuplicate(self):
+        '''This solution has a nested while loop and O(n) is n*2'''
+        node = self.head
+        while node.next:
+            comp = node.next
+            prev = node
+            while comp:
+                if node.data == comp.data:
+                    if comp.next:
+                        prev.next = comp.next
+                        comp = comp.next
+                        continue
+                    else:
+                        self.tail = prev
+                        prev.next = None
+                        comp = None
+                        continue
+                comp = comp.next
+                prev = prev.next
+            if node.next:
+                node = node.next
+            else:
+                break
+        return self
+
+    def ReverseList(self):
+        new_list = LinkedList()
+        l = self.Length()
+        for i in range(l-1, -1, -1):
+            new_list.AddNode(self.FindValue(i))
+        return new_list
+
 
 class Cycle(LinkedList):
     def __init__(self, num):
