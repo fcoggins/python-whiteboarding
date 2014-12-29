@@ -68,7 +68,7 @@ def create_reversed_list(num):
 def add_two_numbers(ll1, ll2):
     '''Each node of a linked list stores a digit in reverse order. Return a linked
     list that contains the sum of the digits. This is from Cracking the Coding Interview
-    problem #2.5
+    problem #2.5 implemented without recursion
 
     Args:
         two linked lists
