@@ -86,150 +86,219 @@ def multiply_list(lst):
         return lst[0] * multiply_list(lst[1:])
 
 
-# def factorial(n):
-#     """Return the factorial of n.
+def factorial(n):
+    """Return the factorial of n.
 
-#     The factorial is the result of multiplying all integers from 1...n.
+    The factorial is the result of multiplying all integers from 1...n.
 
-#     >>> factorial(1)
-#     1
+    >>> factorial(1)
+    1
 
-#     >>> factorial(2)
-#     2
+    >>> factorial(2)
+    2
 
-#     >>> factorial(3)
-#     6
+    >>> factorial(3)
+    6
 
-#     >>> factorial(4)
-#     24
+    >>> factorial(4)
+    24
+    """
+
+    if n == 1:
+        return 1
+    else:
+        return n * factorial(n-1)
+
+
+
+def sum_list(lst):
+    """Sum the items in the list without using loops or the sum() function.
+
+    >>> sum_list([5, 2, 1, 4, 3, 6])
+    21
+
+    >>> sum_list([5, 24, 48, 88])
+    165
+    """
+
+    if lst == []:
+        return 0
+    else:
+        return lst[0] + sum_list(lst[1:])
+
+
+def reverse(lst):
+    """Reverse a list recursively, without loops, reverse() function or list[::-1].
+
+    >>> reverse([1, 2, 3, 4])
+    [4, 3, 2, 1]
+
+    >>> reverse([])
+    []
+    """
+
+    if lst == []:
+        return []
+    else:
+        return reverse(lst[1:]) + [lst[0]]
+
+
+
+
+def fibonacci(n):
+    """Return the nth fibonacci number.
+
+    The nth fibonacci number is defined as:
+
+       fibonacci(n) = fibonacci(n-1) + fibonacci(n-2)
+
+    Use recursion to solve this.
+
+    >>> fibonacci(1)
+    1
+
+    >>> fibonacci(2)
+    1
+
+    >>> fibonacci(3)
+    2
+
+    >>> fibonacci(4)
+    3
+
+    >>> fibonacci(5) 
+    5
+
+    >>> fibonacci(6)
+    8
+
+    >>> fibonacci(7)
+    13
+
+    >>> fibonacci(8)
+    21
+
+    >>> fibonacci(9)
+    34
+    """
+
+    if n == 1:
+        return 1
+    elif n < 1:
+        return 0
+    else:
+        return fibonacci(n-1) + fibonacci(n-2)
+
+
+def find(lst, i):
+    """Find item i in the list lst.
+
+    If the item is in the list, return it. Otherwise, return None.
+
+    Use recursion to solve this.
+
+    >>> find(["a", "b", "c"], "a")
+    'a'
+
+    >>> find(["a", "b", "c"], "c")
+    'c'
+
+    >>> find(["a", "b", "c"], "d")
+    """
+
+    if lst == []:
+        return None
+    elif lst[0] == i:
+        return i
+    else:
+        return find(lst[1:], i)        
+
+
+def is_palindrome(some_string):
+    """Is some_string a palindrome?
+
+    A palindrome is any string that is the same forwards and backwords
+    (e.g., "radar", "racecar", "aibohphobia")
+
+    Solve this using recursion.
+
+    >>> is_palindrome("a")
+    True
+
+    >>> is_palindrome("hello")
+    False
+
+    >>> is_palindrome("racecar")
+    True
+
+    >>> is_palindrome("foof")
+    True
+
+    >>> is_palindrome("foaf")
+    False
+    """
+
+    if some_string == "":
+        return True
+    elif len(some_string) == 1:
+        return True
+    elif some_string[0] != some_string[-1]:
+        return False
+    else:
+        return is_palindrome(some_string[1:-1])
+
+
+def is_palindrome2(some_string):
+    """Another palindrome solution
+
+    Reverse the string and compare.
+
+    >>> is_palindrome2("a")
+    True
+
+    >>> is_palindrome2("hello")
+    False
+
+    >>> is_palindrome2("racecar")
+    True
+
+    >>> is_palindrome2("foof")
+    True
+
+    >>> is_palindrome2("foaf")
+    False
+    """
+    return reverse_string(some_string) == some_string
+
+def reverse_string(some_string):
+    if some_string == "":
+        return ""
+    else:
+        return reverse_string(some_string[1:]) + some_string[0]
+
+
+
+# def magic_index(lst):
+#     """Does a sorted distinct list of integers have a index such that the 
+#     list element's index = it's value
+    
+#     Solve with recursion.
+
+
+#     >>> magic_index([0,1,2])
+#     0 1 2
+
 #     """
 
-#     pass
+#     if len(lst) == 1 and lst[0] == 0:
+#         return 0
+#     else:
+#         n = 1 + magic_index(lst[:-1])
+#         if lst[n] == n:
+#             print n,
+#             return n
 
 
-# def count_list(lst):
-#     """Count the number of elements in the list without using loops or len().
-
-#     >>> count_list([5, 2, 1, 4, 3, 6])
-#     6
-
-#     >>> count_list([5, 24, 48, 88])
-#     4
-#     """
-
-#     pass
-
-
-# def sum_list(lst):
-#     """Sum the items in the list without using loops or the sum() function.
-
-#     >>> sum_list([5, 2, 1, 4, 3, 6])
-#     21
-
-#     >>> sum_list([5, 24, 48, 88])
-#     165
-#     """
-
-#     pass
-
-
-# def reverse(lst):
-#     """Reverse a list recursively, without loops, reverse() function or list[::-1].
-
-#     >>> reverse([1, 2, 3, 4])
-#     [4, 3, 2, 1]
-
-#     >>> reverse([])
-#     []
-#     """
-
-#     pass
-
-
-# def fibonacci(n):
-#     """Return the nth fibonacci number.
-
-#     The nth fibonacci number is defined as:
-
-#        fibonacci(n) = fibonacci(n-1) + fibonacci(n-2)
-
-#     Use recursion to solve this.
-
-#     >>> fibonacci(1)
-#     1
-
-#     >>> fibonacci(2)
-#     1
-
-#     >>> fibonacci(3)
-#     2
-
-#     >>> fibonacci(4)
-#     3
-
-#     >>> fibonacci(5) 
-#     5
-
-#     >>> fibonacci(6)
-#     8
-
-#     >>> fibonacci(7)
-#     13
-
-#     >>> fibonacci(8)
-#     21
-
-#     >>> fibonacci(9)
-#     34
-#     """
-
-#     pass
-
-
-# def find(lst, i):
-#     """Find item i in the list lst.
-
-#     If the item is in the list, return it. Otherwise, return None.
-
-#     Use recursion to solve this.
-
-#     >>> find(["a", "b", "c"], "a")
-#     'a'
-
-#     >>> find(["a", "b", "c"], "c")
-#     'c'
-
-#     >>> find(["a", "b", "c"], "d")
-#     """
-
-#     pass
-
-
-# def is_palindrome(some_string):
-#     """Is some_string a palindrome?
-
-#     A palindrome is any string that is the same forwards and backwords
-#     (e.g., "radar", "racecar", "aibohphobia")
-
-#     Solve this using recursion.
-
-#     >>> is_palindrome("a")
-#     True
-
-#     >>> is_palindrome("hello")
-#     False
-
-#     >>> is_palindrome("racecar")
-#     True
-
-#     >>> is_palindrome("foof")
-#     True
-
-#     >>> is_palindrome("foaf")
-#     False
-#     """
-
-#     pass
 
 
 # def fold_paper(width, height, folds):
